@@ -21,16 +21,16 @@
     <h3><?= h($showtime->id) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($showtime->id) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Movie') ?></th>
-            <td><?= $showtime->has('movie') ? $this->Html->link($showtime->movie->name, ['controller' => 'Movies', 'action' => 'view', $showtime->movie->id]) : '' ?></td>
+            <td><?= $this->Number->format($showtime->movie_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Room') ?></th>
-            <td><?= $showtime->has('room') ? $this->Html->link($showtime->room->name, ['controller' => 'Rooms', 'action' => 'view', $showtime->room->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($showtime->id) ?></td>
+            <td><?= $this->Number->format($showtime->room_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Start') ?></th>
@@ -49,4 +49,14 @@
             <td><?= h($showtime->modified) ?></td>
         </tr>
     </table>
+        <div class="related">
+            <h4><?= __('Showtimes this week : ') ?></h4>
+            <?php if (!empty($movie->showtimes)): ?>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($movie->showtimes as $showtimes): ?>
+                    
+                <?php endforeach; ?>
+            </table>
+            <?php endif; ?>
+        </div>
 </div>

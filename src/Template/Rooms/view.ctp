@@ -40,11 +40,17 @@
         </tr>
     </table>
         <div class="related">
-            <h4><?= __('Related Showtimes') ?></h4>
+            <h4><?= __('Related Showtimes this week') ?></h4>
             <ul>
+            <table>
                 <?php foreach($showtimes as $showtime): ?>
-                    <li> <? h($showtimes)> </li>
+                <tr>
+                    <td> <?= h($showtime->movie->name) ?> </td>
+                    <td> <?= h($showtime->start->format('H:i')) ?> </td>
+                    <td> <?= h($showtime->end->format('H:i')) ?> </td>
+                </tr>
                 <?php endforeach; ?>
+            </table>
             </ul>
         </div>
 </div>

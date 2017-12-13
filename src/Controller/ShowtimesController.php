@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Showtimes Controller
@@ -40,6 +41,8 @@ class ShowtimesController extends AppController
 
         $this->set('showtime', $showtime);
         $this->set('_serialize', ['showtime']);
+        
+        
     }
 
     /**
