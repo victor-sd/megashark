@@ -42,14 +42,28 @@
         <div class="related">
             <h4><?= __('Related Showtimes this week') ?></h4>
             <ul>
-            <table>
-                <?php foreach($showtimes as $showtime): ?>
+            <table>            
                 <tr>
-                    <td> <?= h($showtime->movie->name) ?> </td>
-                    <td> <?= h($showtime->start->format('H:i')) ?> </td>
-                    <td> <?= h($showtime->end->format('H:i')) ?> </td>
+                    <?php foreach($days as $day): ?>
+                        <td> <?= h($day) ?> </td> 
+                    <?php endforeach; ?>
                 </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <?php for($i=1;$i<=7;$i++): ?>
+                        <td>
+                            <?php if(isset($showtimesThisWeek[$i])): ?>
+                            test
+                                <?php foreach($showtimesThisWeek[$i] as $value): ?>
+                                        <ul>
+                                             <?= h($value->movie->name)?><br>
+                                             debut : <?= h($value->start->format('H:i')) ?><br>
+                                             fin : <?= h($value->end->format('H:i')) ?> 
+                                        </ul> 
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </td>
+                    <?php endfor; ?>
+                </tr>              
             </table>
             </ul>
         </div>

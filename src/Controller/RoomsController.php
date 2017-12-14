@@ -14,7 +14,6 @@ class RoomsController extends AppController
 
     /**
      * Index method
-     *
      * @return \Cake\Http\Response|void
      */
     public function index()
@@ -47,10 +46,17 @@ class RoomsController extends AppController
             ->andwhere(['start >=' => $monday])
             ->andwhere(['start <=' => $sunday]);
             
-        $this->set('showtimes', $showtimes);
+            
+        $showtimesThisWeek = [];
+        $days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
         
+        foreach($showtimes as $showtime){
+            $showtimesThisWeek[$showtime->start->format('N')][] = $showtime;     
+        }
         
-        
+        $this->set('showtimesThisWeek', $showtimesThisWeek);
+        $this->set('days', $days);
+        $this->set('showtimes', $showtimes);  
     }
 
     /**
